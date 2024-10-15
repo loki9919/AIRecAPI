@@ -1,0 +1,54 @@
+# Python-specific files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Database files
+*.sqlite3
+*.db
+
+# SSL certificates
+ssl/*.pem
+
+# Logs and temporary files
+*.log
+*.pid
+*.swp
+*.bak
+*.tmp
+*.old
+
+# IDE files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Uvicorn and FastAPI auto-generated files
+*.uvicorn.log
+
+# Pytest cache
+.cache/
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Environment and deployment settings
+.env
+.env.*
+
+# Dependencies and build
+pip-wheel-metadata/
+build/
+dist/
