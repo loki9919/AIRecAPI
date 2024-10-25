@@ -6,7 +6,9 @@ class Settings(BaseSettings):
     API_KEYS: List[str]
     DATABASE_URL: str
 
+
     class Config:
         env_file = ".env"
 
+# Create an instance of the Settings class
 settings = Settings()
