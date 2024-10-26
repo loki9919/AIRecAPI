@@ -5,8 +5,10 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Secure Product API"
     API_KEYS: List[str]
     DATABASE_URL: str
-    GROQ_API_KEY: str
+
+
     class Config:
         env_file = ".env"
 
+# Create an instance of the Settings class
 settings = Settings()
