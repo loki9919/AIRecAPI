@@ -1,54 +1,61 @@
-# Python-specific files
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.pyo
+*.so
+
+# C extensions
 *.pyd
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+develop-eggs/
+*.egg-info/
+.env
+
+# Django stuff:
+*.sqlite3
+
+# Flask stuff:
+instance/
+
+# Local configuration
+local_settings.py
 *.env
 
-# Virtual environment
-env/
-venv/
-.venv/
+# PyInstaller
+#  - usually these files are better off checked into source control, but you can
+#    use this section to exclude them if you prefer.
+#
+# ../*.[ch]
+# ../*.manifest
+# ../*.spec
 
-# Database files
-*.sqlite3
-*.db
+# Sphinx documentation
+docs/_build/
 
-# SSL certificates
-ssl/*.pem
-
-# Logs and temporary files
-*.log
-*.pid
-*.swp
-*.bak
-*.tmp
-*.old
+# Testing
+.pytest_cache/
+.hypothesis/
 
 # IDE files
-.vscode/
 .idea/
+*.iml
 
-# OS-specific files
+# Miscellaneous files
 .DS_Store
-Thumbs.db
+thumbs.db
+*.log
+*.pid
 
-# Uvicorn and FastAPI auto-generated files
-*.uvicorn.log
+# AWS files
+.aws/
 
-# Pytest cache
-.cache/
-.pytest_cache/
+# Azure files
+.azure/
 
-# Coverage reports
-htmlcov/
-.coverage
+# Google Cloud files
+.gcloud/
 
-# Environment and deployment settings
-.env
-.env.*
-
-# Dependencies and build
-pip-wheel-metadata/
-build/
-dist/
+.venv/

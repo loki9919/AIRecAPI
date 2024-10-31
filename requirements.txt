@@ -1,0 +1,11 @@
+numpy<2
+Flask
+flask-cors
+flask-sqlalchemy
+pydantic
+sentence-transformers
+faiss-cpu
+sqlalchemy
+aiosqlite
+pydantic-settings
+flask_restx
