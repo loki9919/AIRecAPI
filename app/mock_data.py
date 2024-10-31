@@ -17,13 +17,13 @@ def create_mock_data(dbsession: Session):
             "name": "Wireless Noise-Cancelling Headphones",
             "description": "Experience immersive audio with these premium noise-cancelling headphones. Crystal-clear sound, comfortable over-ear design, and long battery life.",
             "category": "Electronics",
-            "tags": "headphones,audio,noise-cancelling"
+            "tags": "headphones,audio,noise-cancelling",
         },
         {
             "name": "The Art of War",
             "description": "A timeless classic on military strategy. Explore ancient wisdom and learn the principles of warfare.",
             "category": "Books",
-            "tags": "strategy,military,classic"
+            "tags": "strategy,military,classic",
         },
     ]
 
@@ -35,17 +35,4 @@ def create_mock_data(dbsession: Session):
         db_products.append(db_product)
     dbsession.commit()
 
-    # Prepare documents for vector store
-    docs = []
-    for product in db_products:
-        # Create a document combining product info
-        content = f"Name: {product.name}\nDescription: {product.description}\nCategory: {product.category}\nTags: {product.tags}"
-        doc = Document(
-            page_content=content,
-            metadata={"product_id": product.id}
-        )
-        docs.append(doc)
-
-    # Initialize vector store with documents
-    initialize_vector_store(docs)
     return db_products
