@@ -9,7 +9,8 @@ class ProductBase(BaseModel):
 class ProductCreate(ProductBase):
     pass
 
-class Product(ProductBase):
+
+class ProductSchema(ProductBase):
     id: int
 
     class Config:
