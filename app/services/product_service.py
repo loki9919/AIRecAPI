@@ -1,28 +1,32 @@
-from typing import List, Optional
-from sqlalchemy.orm import Session
-from sqlalchemy import or_
+from typing import List
+from app.schemas.product import ProductSchema
+from app.embeddings import faiss_service
+from app.extensions import db  # Import db from extensions.py
 from app.models.product import Product
-import numpy as np
-from app.embeddings import get_vector_store, generate_embedding
 
-async def get_similar_products(db: Session, product_id: int) -> Optional[List[Product]]:
-    """Get similar products based on tags."""
-    product = db.query(Product).filter(Product.id == product_id).first()
-    if not product:
-        return None
-    
-    tags = product.tags.split(',') if product.tags else []
-    if not tags:
-        return []
-        
-    filters = [Product.tags.like(f"%{tag.strip()}%") for tag in tags]
-    similar_products = (
-        db.query(Product)
-        .filter(Product.id != product_id)
-        .filter(or_(*filters))
-        .limit(5)
-        .all()
-    )
+
+def get_similar_products(query: str, top_k: int = 5) -> List[ProductSchema]:
+    """Get similar products using FAISS."""
+    results = faiss_service.search(query, top_k)
+    similar_products = []
+    for result in results:
+        # Use db.session to create a new session
+        with db.session() as session:
+            product = (
+                session.query(Product)
+                .filter(Product.id == result["product_id"])
+                .first()
+            )
+            if product:
+                similar_products.append(
+                    ProductSchema(
+                        id=product.id,
+                        name=product.name,
+                        description=product.description,
+                        category=product.category,
+                        tags=product.tags,
+                    )
+                )
     return similar_products
 
 async def get_similar_products_embeddings(
