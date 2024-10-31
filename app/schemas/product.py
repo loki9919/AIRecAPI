@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 class ProductBase(BaseModel):
     name: str
-    description: str | None = None
+    description: str
     category: str
     tags: str
 
