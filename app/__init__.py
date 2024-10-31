@@ -7,7 +7,7 @@ from app.extensions import db
 from app.embeddings import faiss_service  # Import the singleton instance
 import json
 from app.schemas.product import ProductSchema  # Import your ProductSchema
-
+import logging
 
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -18,6 +18,7 @@ class CustomJSONEncoder(json.JSONEncoder):
 
 def create_app():
     app = Flask(__name__)
+    logging.basicConfig(level=logging.DEBUG)
     CORS(app)
     # Use the custom encoder in your Flask app
     app.json_encoder = CustomJSONEncoder
